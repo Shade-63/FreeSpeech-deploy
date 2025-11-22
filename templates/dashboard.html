@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SafeSpeak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <!-- Plotly JS -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>FreeSpeech Dashboard</h1>
+        <p class="subtitle">Your toxicity analytics & progress</p>
+        <a href="/" class="btn-home">← Back to Chat</a>
+    </header>
+
+    <!-- Top Stats -->
+    <div class="stats-row">
+        <div class="stat-box">
+            <h3>{{ total }}</h3>
+            <p>Total Messages</p>
+        </div>
+        <div class="stat-box">
+            <h3>{{ toxic }}</h3>
+            <p>Toxic Messages</p>
+        </div>
+        <div class="stat-box">
+            <h3>{{ safe }}</h3>
+            <p>Safe Messages</p>
+        </div>
+    </div>
+
+    <!-- Charts Row 1 -->
+    <div class="chart-row">
+        <div class="chart-card">
+            <h3 class="chart-title">Toxic vs Safe Messages</h3>
+            <div class="chart-container" id="pie-chart-container">
+                {{ pie_chart | safe }}
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <h3 class="chart-title">Toxic Label Distribution</h3>
+            <div class="chart-container" id="bar-chart-container">
+                {{ bar_chart | safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row 2 -->
+    <div class="chart-row">
+        <div class="chart-card wide">
+            <h3 class="chart-title">Toxicity Score Over Time</h3>
+            <div class="chart-container" id="line-chart-container">
+                {{ line_chart | safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Toxic Messages -->
+    <h2 class="section-title">Recent Toxic Messages</h2>
+
+    <table class="toxic-table">
+        <thead>
+            <tr>
+                <th>Message</th>
+                <th>Label</th>
+                <th>Severity</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in recent_toxic %}
+            <tr>
+                <td>{{ item.msg }}</td>
+                <td>{{ item.label }}</td>
+                <td>{{ item.severity }}</td>
+                <td>{{ item.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+// Fix for Plotly charts rendering issues
+document.addEventListener('DOMContentLoaded', function() {
+    // Force Plotly to redraw charts after page load
+    setTimeout(function() {
+        if (typeof Plotly !== 'undefined') {
+            const charts = document.querySelectorAll('.js-plotly-plot');
+            charts.forEach(function(chart) {
+                Plotly.Plots.resize(chart);
+            });
+        }
+    }, 100);
+});
+</script>
+
+</body>
+</html>

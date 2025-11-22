@@ -1,0 +1,97 @@
+body {
+    background: #f4f6fc;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.app-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a73e8;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+.chat-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+    height: 450px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.analysis-section {
+    flex: 1;
+}
+
+.panel {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+}
+
+.message-bubble {
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+/* Safe messages */
+.safe {
+    background: #e5f0ff;
+    color: #1a4e8a;
+}
+
+/* Toxic messages */
+.toxic {
+    background: #ffe5e5;
+    color: #8a1a1a;
+}
+
+/* Progress bar */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    width: 0%;
+    background: #1a73e8;
+    border-radius: 5px;
+    transition: 0.3s;
+}

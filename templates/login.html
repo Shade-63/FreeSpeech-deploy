@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - SafeSpeak</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" class="auth-icon">
+            <h2>Welcome Back</h2>
+            <p>Log in to continue moderating safely</p>
+        </div>
+
+        <form method="POST">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button class="auth-btn" type="submit">Login</button>
+
+            <p class="switch-link">
+                No account? <a href="/signup">Create one</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

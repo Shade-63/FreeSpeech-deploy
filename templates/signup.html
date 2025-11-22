@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup - SafeSpeak</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" class="auth-icon">
+            <h2>Create Account</h2>
+            <p>Join SafeSpeak and build safer classrooms</p>
+        </div>
+
+        <form method="POST">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input name="username" placeholder="Choose a username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a password" required>
+            </div>
+
+            <button class="auth-btn" type="submit">Sign Up</button>
+
+            <p class="switch-link">
+                Already have an account? <a href="/login">Login</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
